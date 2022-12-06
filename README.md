@@ -12,7 +12,7 @@ An end-to-end Data Science Project to forecast stock volatilities.
 ## Problem Statement
 The main motivation for studying conditional heroskedasticity in finance is that of volatility of asset returns. Volatility is an important concept in finance because it is highly synonymous with risk. Hense, if we can effectively forecast volatility then we will be able to price options more accurately, create more sophisticated risk management tools for the algorithmic trading portfolios and even come up with new strategies taht trade volatility directly.
 
-add arguemnts 
+Therefore, in this project we develop a Streamlit App that utilizes a Statistical model as an API to forecast the stocks volatility. 
 
 The App can be viewed through this [link]()
 
@@ -23,7 +23,7 @@ Finance data (daily trading) were extracted from [Alpha Vantage API](https://www
 #### Data preprocessing stets:
  - Transform the data from json format to a dataframe format
  - Clean and wrangle the data
- - Stored the data on a relational database
+ - Stored the data in a relational database
  - calculate daily stock returns from close prices
 
 #### Model
