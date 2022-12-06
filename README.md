@@ -32,7 +32,7 @@ Finance data (daily trading) were extracted from [Alpha Vantage API](https://www
 Generalized AutoRegressive Conditional Heteroskedasticity (GARCH) is a statistical model used in analyzing time-series data where the variance error is believed to be serially autocorrelated. GARCH models assume that the variance of the error term follows an autoregressive moving average process.
 
 Usually a GARCH(p = 1, q = 1) is specified as:
-![model]('https://github.com/Luissalazarsalinas/Stock-Volatility-Forecast/blob/master/img/2022-12-05.png')
+![model](https://github.com/Luissalazarsalinas/Stock-Volatility-Forecast/blob/master/img/2022-12-05.png)
 
 For more informations over GARCH model visit the following [link](https://www.quantstart.com/articles/Generalised-Autoregressive-Conditional-Heteroskedasticity-GARCH-p-q-Models-for-Time-Series-Analysis/)
 
