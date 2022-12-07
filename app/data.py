@@ -1,4 +1,4 @@
-import sqlite3
+# import sqlite3
 
 import requests
 import pandas as pd
@@ -47,45 +47,45 @@ class AlphaVantageApi():
         return df
 
 
-class SQLRepository():
-    def __init__(self, connection):
+# class SQLRepository():
+#     def __init__(self, connection):
 
-        self.connection = connection
+#         self.connection = connection
 
-    # Methods
-    def insert_table(self, table_name:str, record, if_exists:str = "replace"):
+    # # Methods
+    # def insert_table(self, table_name:str, record, if_exists:str = "replace"):
 
-        # stored data into a sqlite database
-        n_inserted = record.to_sql(
-            name = table_name,
-            con = self.connection,
-            if_exists = if_exists
-        )
+    #     # stored data into a sqlite database
+    #     n_inserted = record.to_sql(
+    #         name = table_name,
+    #         con = self.connection,
+    #         if_exists = if_exists
+    #     )
 
-        return {
-            "transaction_successful": True,
-            "records_inserted": n_inserted
-        }
+    #     return {
+    #         "transaction_successful": True,
+    #         "records_inserted": n_inserted
+    #     }
 
-    def read_table(self, table_name:str, limit: int = None):
+    # def read_table(self, table_name:str, limit: int = None):
 
 
-        # Query
-        if limit:
+    #     # Query
+    #     if limit:
             
-            query = f"SELECT * FROM '{table_name}' LIMIT {limit}"
+    #         query = f"SELECT * FROM '{table_name}' LIMIT {limit}"
 
-        else:
-            query = f"SELECT * FROM '{table_name}'"
-        # read sql data
-        df = pd.read_sql(
-            sql= query,
-            con = self.connection,
-            parse_dates= "date",
-            index_col="date"
-        )
+    #     else:
+    #         query = f"SELECT * FROM '{table_name}'"
+    #     # read sql data
+    #     df = pd.read_sql(
+    #         sql= query,
+    #         con = self.connection,
+    #         parse_dates= "date",
+    #         index_col="date"
+    #     )
 
-        return df
+    #     return df
 
 
 

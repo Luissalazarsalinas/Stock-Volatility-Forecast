@@ -4,41 +4,23 @@
 
 import pandas as pd
 from arch import arch_model
-from app.config import settings
-from app.data import AlphaVantageApi, SQLRepository
+from app.data import AlphaVantageApi
 
 class GrachModel:
 
-    def __init__(self, ticker, repo, use_new_data):
+    def __init__(self, ticker):
 
         self.ticker = ticker
-        self.repo = repo
-        self.use_new_data = use_new_data
-
     # Methods
-    def wrangle_data(self, n_observations):
-
-        if self.use_new_data:
-            # Intance 
-            av = AlphaVantageApi()
-            # get daily data
-            new_data = av.get_daily(ticker=self.ticker)
-            # Create a new table
-            self.repo.insert_table(
-                table_name = self.ticker,
-                record = new_data,
-                if_exists = "replace"
-            )
-
-        # Read data from the database
-        df = self.repo.read_table(
-            table_name = self.ticker,
-            limit = n_observations+1
-        ) 
-
+    def wrangle_data(self):
+        
+        # Intance 
+        av = AlphaVantageApi()
+        # get daily data
+        df = av.get_daily(ticker=self.ticker)
         # Sort index
         df.sort_index(ascending = True, inplace = True)
-        # Computing the returns
+        # Calculing the returns
         df["return"] = df["close"].pct_change()*100
         # stored a object data
         self.data = df["return"].dropna()

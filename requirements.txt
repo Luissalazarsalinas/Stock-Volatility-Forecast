@@ -12,3 +12,4 @@ statsmodels==0.13.5
 arch==5.3.1
 pydantic==1.10.2
 httptools==0.5.0
+requests==2.28.1

@@ -1,26 +1,17 @@
-import sqlite3
+#import sqlite3
 
 from fastapi import FastAPI, status
 import uvicorn
 from app.schemas import  PredictIn, PredictOut
 from app.config import settings
-from app.data import AlphaVantageApi, SQLRepository
+from app.data import AlphaVantageApi
 from app.model import GrachModel
 
 # Funtion to build the model
-def build_model(ticker, use_new_data):
-
-    # Create DB connection
-    connection = sqlite3.connect(settings.database_name, check_same_thread=False)
-
-    #create a SQLrepository
-    repo = SQLRepository(connection=connection)
-
+def build_model(ticker):
     # Create the model
     model = GrachModel(
-        ticker= ticker,
-        repo= repo,
-        use_new_data= use_new_data
+        ticker= ticker,   
     )
     return model
 
@@ -38,10 +29,10 @@ def fit_model(request:PredictIn):
     try:
 
         # Create the model
-        model = build_model(ticker=request.ticker, use_new_data=request.use_new_data)
+        model = build_model(ticker=request.ticker)
 
         # Wrangle data
-        model.wrangle_data(n_observations=request.n_observations)
+        model.wrangle_data()
 
         # Train the model
         model.fit_model(p=request.p, q=request.q)
@@ -67,7 +58,7 @@ def fit_model(request:PredictIn):
         # Add forecast
         response["forecast"] = {}
         # add Metricts
-        response["metrics"] = " "
+        response["metrics"] = {}
         # add to Forescast
         response["message"] = str(e)
     

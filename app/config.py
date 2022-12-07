@@ -13,8 +13,7 @@ def full_path_env(filename: str = ".env") -> str:
 class Settings(BaseSettings):
     """ Validation data from env variables """
     api_key:str
-    database_name:str
-
+    
     class Config:
         env_file = full_path_env(".env")
 
