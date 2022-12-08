@@ -11,7 +11,7 @@ class GrachModel:
     def __init__(self, ticker):
 
         self.ticker = ticker
-    # Methods
+    # # Methods
     def wrangle_data(self):
         
         # Intance 

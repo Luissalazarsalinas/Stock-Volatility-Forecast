@@ -1,9 +1,5 @@
-#import sqlite3
 
-from fastapi import FastAPI, status
-import uvicorn
-from app.schemas import  PredictIn, PredictOut
-from app.config import settings
+import pandas as pd
 from app.data import AlphaVantageApi
 from app.model import GrachModel
 
@@ -15,30 +11,22 @@ def build_model(ticker):
     )
     return model
 
-# Create API object
-app = FastAPI()
+def forecast_volatility(ticker:str, p:int = 1, q:int = 1, n_days:int = 5):
 
-
-# Predict path
-@app.post("/predict", status_code= status.HTTP_201_CREATED, response_model=PredictOut)
-def fit_model(request:PredictIn):
-
-    # Createa dict
-    response = request.dict()
-
+    response = {}
+    
     try:
-
         # Create the model
-        model = build_model(ticker=request.ticker)
+        model = build_model(ticker=ticker)
 
-        # Wrangle data
+        # # Wrangle data
         model.wrangle_data()
 
         # Train the model
-        model.fit_model(p=request.p, q=request.q)
+        model.fit_model(p=p, q=q)
 
         # Create a prediction
-        prediction = model.predict_volatility(horizon=request.n_days)
+        prediction = model.predict_volatility(horizon=n_days)
 
         # add response
         response["success"] = True
@@ -50,7 +38,7 @@ def fit_model(request:PredictIn):
         response["metrics"] = {"AIC" : model.aic, "BIC": model.bic} #f"AIC : {model.aic} BIC : {model.bic}"
 
         # Add message
-        response["message"] = f"{request.ticker} Volatility Forecast"
+        response["message"] = f"{ticker} Volatility Forecast"
 
     except Exception as e:
         # add to response

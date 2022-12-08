@@ -2,11 +2,11 @@
 
 import requests
 import pandas as pd
-from app.config import settings
+from app.config import api_key_env
 
 class AlphaVantageApi():
 
-    def __init__(self, api_key = settings.api_key):
+    def __init__(self, api_key = api_key_env):
 
         self.__api_key = api_key
     

@@ -12,7 +12,7 @@ An end-to-end Data Science Project to forecast stock volatilities.
 ## Problem Statement
 The main motivation for studying conditional heroskedasticity in finance is that of volatility of asset returns. Volatility is an important concept in finance because it is highly synonymous with risk. Hense, if we can effectively forecast volatility then we will be able to price options more accurately, create more sophisticated risk management tools for the algorithmic trading portfolios and even come up with new strategies taht trade volatility directly.
 
-Therefore, in this project we develop a Streamlit App that utilizes a Statistical model as an API to forecast the stocks volatility. 
+Therefore, in this project we develop a Streamlit App that utilizes a Statistical model to forecast the stocks volatility. 
 
 The App can be viewed through this [link]()
 
@@ -23,7 +23,6 @@ Finance data (daily trading) were extracted from [Alpha Vantage API](https://www
 #### Data preprocessing stets:
  - Transform the data from json format to a dataframe format
  - Clean and wrangle the data
- - Stored the data in a relational database
  - calculate daily stock returns from close prices
 
 #### Model
@@ -38,39 +37,7 @@ Usually a GARCH(p = 1, q = 1) is specified as:
 For more informations over GARCH model visit the following [link](https://www.quantstart.com/articles/Generalised-Autoregressive-Conditional-Heteroskedasticity-GARCH-p-q-Models-for-Time-Series-Analysis/)
 
 ## Deployment
-The API was deployed using docker container on Heroku and the Streamlit App was deployed on Streamlit Cloud
+Streamlit App was deployed on Streamlit Cloud
 
-<details> 
-  <summary><b>💻 Deploying the API</b></summary>
 
-1. Heroku logging 
-
-```
-Heroku login
-```
-
-2. Create a heroku app
-
-```
-heroku create <app-name> 
-```
-
-3. Set the heroku cli git remote to that app
-
-``` 
-heroku git:remote <app-name>
-```
-
-4. Set the heroku stack setting to container
-
-```
-heroku stack:set container
-```
-
-5. Push to herokuPush to heroku
- 
-```
-git push heroku branch <master/main>
-```
-</details>
 
