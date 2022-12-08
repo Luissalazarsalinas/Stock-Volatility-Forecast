@@ -1,6 +1,3 @@
-import json
-import sqlite3
-import requests
 
 import pandas as pd
 import numpy as np
@@ -31,7 +28,7 @@ st.write(
 
     **This Streamlit App  utilizes a Statistical model to forecast the stocks volatility.**
     
-    All documentations are available on [Github](https://github.com/Luissalazarsalinas/Fraud-Detection)
+    All documentations are available on [Github](https://github.com/Luissalazarsalinas/Stock-Volatility-Forecast)
     
     **Made by Luis Fernando Salazar S.**
     """
