@@ -6,7 +6,7 @@ six==1.16.0
 joblib==1.2.0
 numpy==1.23.4
 matplotlib==3.6.2
-plotly==1.15.2
+plotly==5.11.0
 statsmodels==0.13.5
 arch==5.3.1
 pydantic==1.10.2
