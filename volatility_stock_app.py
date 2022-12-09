@@ -11,7 +11,7 @@ from  app.forecast import forecast_volatility
 
 
 # App title
-st.title("Stock Volatility Forecast App")
+st.title("Volatility Forecast App")
 
 #some image
 st.image("img/Volatility.jpg")
@@ -24,7 +24,7 @@ st.write(
     The main motivation for studying conditional heroskedasticity in finance is that of volatility of asset returns. 
     Volatility is an important concept in finance because it is highly synonymous with risk. 
     Hense, if we can effectively forecast volatility then we will be able to price options more accurately, 
-    create more sophisticated risk management tools for the algorithmic trading portfolios and even come up with new strategies taht trade volatility directly.
+    create more sophisticated risk management tools for the algorithmic trading portfolios and even come up with new strategies that trade volatility directly.
 
     **This Streamlit App  utilizes a Statistical model to forecast the stocks volatility.**
     
@@ -99,7 +99,7 @@ def hist_plot(data):
     figure = px.histogram(
         data_frame= data,
         x="returns",
-        nbins= 10
+        nbins= 25
     )
     figure.update_layout(xaxis_title = "Date", yaxis_title = "Frequency")
 
@@ -142,7 +142,7 @@ with st.expander("Display Daily Returns Plots"):
 
 ################################# Correclations Plots###########################
 ################################################################################
-with st.expander("Display Autocorreclations Plots"):
+with st.expander("Display Autocorrelation Plots"):
 
     st.markdown("### Autocorrelaction Funtion Plot - Squared Returns")
     fig, ax = plt.subplots()
